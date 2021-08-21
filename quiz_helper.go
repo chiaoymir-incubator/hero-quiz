@@ -59,9 +59,13 @@ func printResult(totalQ, correct, pass, wrong int) {
 	colorizeln(ColorBrightCyan, totalPointsMsg)
 }
 
-func startQuiz(quizs []QuizRecord, t int) {
+func startQuiz(quizs []QuizRecord, t int, n int) {
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(quizs), func(i, j int) { quizs[i], quizs[j] = quizs[j], quizs[i] })
+
+	if n <= len(quizs) {
+		quizs = quizs[0:n]
+	}
 
 	scanner := bufio.NewScanner(os.Stdin)
 	correct := 0

@@ -10,6 +10,7 @@ func main() {
 
 	fileName := flag.String("csv", "./problems/main.csv", "the input csv file, the format is question,answer.")
 	timeLimit := flag.Int("limit", 180, "the question time limit")
+	quizNumber := flag.Int("num", 10, "the number of question")
 	flag.Parse()
 
 	if *timeLimit < 1 {
@@ -20,6 +21,6 @@ func main() {
 	file := readCSV(fileName)
 	quizs := parseCSVQuiz(file)
 
-	startQuiz(quizs, *timeLimit)
+	startQuiz(quizs, *timeLimit, *quizNumber)
 
 }
